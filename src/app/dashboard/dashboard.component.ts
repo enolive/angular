@@ -1,6 +1,9 @@
 import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Book} from '../shared/book';
 import {BookComponent} from '../book/book.component';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/filter';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
     selector: 'app-dashboard',
@@ -9,9 +12,7 @@ import {BookComponent} from '../book/book.component';
 })
 export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
     books: Book[];
-
-    constructor() {
-    }
+    private subscription: Subscription;
 
     @ViewChild(BookComponent)
     firstComponent: BookComponent;
@@ -29,20 +30,21 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
             return;
         }
 
-        this.firstComponent.rated.subscribe(
-            (book: Book) => console.log(book.title));
+        this.subscription = this.firstComponent.rated
+            .filter(b => b.title === 'Angular')
+            .map(b => b.title)
+            .subscribe((title) => console.log(title));
     }
 
     ngOnDestroy(): void {
-        if (this.firstComponent == null) {
+        if (this.subscription == null) {
             return;
         }
 
-        this.firstComponent.rated.unsubscribe();
+        this.subscription.unsubscribe();
     }
 
     reorderBooks(whichBook: Book) {
-        console.log(whichBook.title);
         this.books.sort((a, b) => b.rating - a.rating);
     }
 }
