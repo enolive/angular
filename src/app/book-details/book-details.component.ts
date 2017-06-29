@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Book} from '../shared/book';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
     selector: 'app-book-details',
@@ -8,11 +9,15 @@ import {Book} from '../shared/book';
 })
 export class BookDetailsComponent implements OnInit {
 
-    book: Book;
+    book: Book = new Book('', 'Not Found', '');
+    isbn: string;
 
-    constructor() {
+    constructor(private route: ActivatedRoute) {
     }
 
     ngOnInit() {
+        this.route.params.subscribe(params => {
+            this.isbn = params.isbn;
+        });
     }
 }
