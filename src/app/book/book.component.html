@@ -3,7 +3,7 @@
         <img src="//ng-buch.de/avatar/{{book.rating}}"/>
     </div>
 
-    <h2>{{book.title}} - <span class="small">{{book.rating}}</span></h2>
+    <h2>{{book.title}} - <small *ngFor="let _ of hearts">❤️</small></h2>
     <h3>ISBN: {{book.isbn}}</h3>
     <p>
         {{book.description}}

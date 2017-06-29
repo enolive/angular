@@ -12,6 +12,10 @@ export class BookComponent  {
 
   @Output() rated = new EventEmitter<Book>();
 
+  get hearts() {
+      return new Array(this.book.rating);
+  }
+
   rateUp() {
       this.book.rateUp();
       this.rated.emit(this.book);
