@@ -17,7 +17,14 @@ export class BookDetailsComponent implements OnInit {
 
     ngOnInit() {
         this.route.params.subscribe(params => {
-            this.isbn = params.isbn;
+           this.refreshRouterParameters(params);
         });
+
+        // easier way if the component does not route to itself
+        // this.refreshRouterParameters(this.route.snapshot.params);
+    }
+
+    private refreshRouterParameters(params) {
+        this.isbn = params.isbn;
     }
 }
