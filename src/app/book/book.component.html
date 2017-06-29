@@ -8,7 +8,7 @@
     <p>
         {{book.description}}
     </p>
-    <button (click)="rateUp()">+1</button>
-    <button (click)="rateDown()">-1</button>
-    <button>Details</button>
+    <button (click)="rateUp()" class="btn btn-success">+1</button>
+    <button (click)="rateDown()" class="btn btn-danger">-1</button>
+    <a [routerLink]="['/book', book.isbn]" class="btn btn-primary">Details</a>
 </div>

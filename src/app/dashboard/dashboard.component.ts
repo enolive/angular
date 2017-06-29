@@ -23,6 +23,8 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
             new Book('43323325', 'AngularJS 1.x', 'Oldie but goldie', 2),
             new Book('16663211', 'Clean Code', 'The Bible!!!', 5),
         ];
+
+        this.reorderBooks(null);
     }
 
     ngAfterViewInit(): void {
