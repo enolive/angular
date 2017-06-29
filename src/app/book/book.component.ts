@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {Book} from '../shared/book';
 
 @Component({
@@ -6,7 +6,7 @@ import {Book} from '../shared/book';
   templateUrl: './book.component.html',
   styleUrls: ['./book.component.css'],
 })
-export class BookComponent {
+export class BookComponent  {
 
   @Input() book: Book;
 

@@ -8,16 +8,6 @@ describe('BookComponent', () => {
 
     beforeEach(() => component = new BookComponent());
 
-    function aBook() {
-        const book = {
-            rateUp: () => {
-            },
-            rateDown: () => {
-            },
-        } as Book;
-        return book;
-    }
-
     it('should pass rateUp to book', () => {
         const spy = aBook();
         component.book = spy;
@@ -37,4 +27,26 @@ describe('BookComponent', () => {
 
         expect(spy.rateDown).toHaveBeenCalled();
     });
+
+    it('should emit rated event on rateUp', () => {
+        let called = 0;
+        component.book = aBook();
+        component.rated.subscribe(() => {
+            called++;
+        });
+
+        component.rateUp();
+        component.rateDown();
+        expect(called).toBe(2);
+    });
+
+    function aBook() {
+        const book = {
+            rateUp: () => {
+            },
+            rateDown: () => {
+            },
+        } as Book;
+        return book;
+    }
 });
