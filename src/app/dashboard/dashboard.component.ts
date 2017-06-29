@@ -19,7 +19,10 @@ export class DashboardComponent implements OnInit {
       new Book('43323325', 'AngularJS 1.x', 'Oldie but goldie', 2),
       new Book('16663211', 'Clean Code', 'The Bible!!!', 5),
     ];
-
   }
 
+  reorderBooks(whichBook: Book) {
+      console.log(whichBook.title);
+      this.books.sort((a, b) => b.rating - a.rating);
+  }
 }

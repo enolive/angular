@@ -1,6 +1,7 @@
 <app-book
         *ngFor="let book of books"
-        [book]="book">
+        [book]="book"
+        (rated)="reorderBooks($event)">
 </app-book>
 
 <div>

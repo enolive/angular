@@ -14,11 +14,11 @@ export class BookComponent {
 
   rateUp() {
       this.book.rateUp();
-      this.rated.emit();
+      this.rated.emit(this.book);
   }
 
   rateDown() {
       this.book.rateDown();
-      this.rated.emit();
+      this.rated.emit(this.book);
   }
 }
