@@ -1,11 +1,13 @@
 <div class="well">
-  <div class="thumbnail pull-right">
-    <img src="//ng-buch.de/avatar/{{book.rating}}"/>
-  </div>
+    <div class="thumbnail pull-right">
+        <img src="//ng-buch.de/avatar/{{book.rating}}"/>
+    </div>
 
-  <h2>{{book.title}} - {{book.rating}}</h2>
-  <h3>ISBN: {{book.isbn}}</h3>
-  <p>
-    {{book.description}}
-  </p>
+    <h2>{{book.title}} - <span class="small">{{book.rating}}</span></h2>
+    <h3>ISBN: {{book.isbn}}</h3>
+    <p>
+        {{book.description}}
+    </p>
+    <button (click)="book.rateUp()">+1</button>
+    <button (click)="book.rateDown()">-1</button>
 </div>
